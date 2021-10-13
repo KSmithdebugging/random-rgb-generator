@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RGB Generator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h1 class="title">Find your color here</h1>
+    <div class="wrapper">
+        <!-- Return rgb color here -->
+        <div class="box" id="box">
+            <!-- Return rgb array here -->
+            <div class="rgb" id="rgb"></div>
+        </div>
+        <button class="button" id="button" onclick="generateColor(); audio()">Generate Color</button>
+        <audio id="missioncomplete" src="success.mp3"></audio>
+        <!-- Trigger the generateColor function -->
+    </div>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+
+        .title {
+            text-align: center;
+            color: red;
+        }
+
+        .title:hover {
+            color: blue;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box {
+            width: 250px;
+            height: 175px;
+            border: 1px solid black;
+            border-radius: 4px;
+            background-color: transparent;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .rgb {
+            margin: 0 auto;
+        }
+
+        .button {
+            margin: 0 auto;
+            display: block;
+            background-color: orange;
+            color: white;
+        }
+
+        .button:hover {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+
+    <script>
+        // Function triggered when the button is clicked
+        function generateColor() {
+            var newColor = makeColor();
+            var box = document.getElementById('box').style.backgroundColor = newColor;
+            // Retrieving the id of box's and its color then changing the background color to the newColor's rgb
+            document.getElementById('rgb').innerHTML = newColor;
+            // Modifies the selected id element 'rgb' and changing its color to the variable newColor
+        }
+        function makeColor() {
+            // Create an empty array
+            var arr = [];
+            // Runs through the loop three times
+            for (var i = 0; i < 3; i++) {
+                var rgb = Math.floor(Math.random() * 256)
+                // Choosing a random whole number between 0 to 256;
+                arr.push(rgb)
+                // Push the three numbers into the array
+            }
+            var newRgb = 'rgb(' + arr[0] + ',' + arr[1] + ',' + arr[2] + ')';
+            // Combines the three numbers in a rgb array.
+            return newRgb;
+            // Prints the rgb array
+        }
+    //    Play GTA San Andreas audio when the button is clicked
+        function audio() {
+        var playaudio = document.getElementById("missioncomplete");
+        missioncomplete.play();
+      }
+    </script>
+</body>
+
+</html>
