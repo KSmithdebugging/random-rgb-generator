@@ -1,1 +1,1 @@
-# RGB-Generator
+# random-rgb-generator
